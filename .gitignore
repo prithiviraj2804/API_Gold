@@ -1,0 +1,6 @@
+__pycache__/
+.git/
+gold.db
+check.py
+app/__pycache__/
+images/
