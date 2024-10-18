@@ -138,32 +138,34 @@ def get_customers_by_ph_no(number: str, db: Session = Depends(get_db)):
 
 @router.put("/customers/{customer_id}", response_model=schemas.CustomerOut)
 def update_customer(
-    customer_id: str,
+    customer_id: int,
     app_no: int = Form(...),
     username: str = Form(...),
     address: str = Form(...),
     ph_no: str = Form(...),
     item_weight: int = Form(...),
     amount: int = Form(...),
-    current_amount: int = Form(...),
+    current_amount: int = Form(...),  # Optional field
     start_date: str = Form(...),
     end_date: str = Form(...),
     note: str = Form(...),
     status: str = Form(...),
-    image: UploadFile = File(None),
+    image: UploadFile = File(None),  # Optional image
     db: Session = Depends(get_db)
 ):
     try:
-        customer = db.query(models.Customers).filter(models.Customers.app_no == app_no).first()
+        customer = db.query(models.Customers).filter(models.Customers.app_no == customer_id).first()
 
         if not customer:
             raise HTTPException(status_code=404, detail="Customer not found")
         
+        # Ensure valid status is provided
         if status not in [models.StatusEnum.pending.value, models.StatusEnum.completed.value]:
             raise HTTPException(status_code=400, detail="Invalid status value")
         
         customer.status = status
 
+        # Handle payment history if current_amount is provided
         if current_amount:
             payment_history = json.loads(customer.payment_history) if customer.payment_history else []
 
@@ -176,11 +178,14 @@ def update_customer(
 
             total_payments = sum([entry["payment"] for entry in payment_history])
 
+            # Update pending amount
             new_pending = amount - total_payments
             customer.pending = new_pending
 
+            # Save updated payment history
             customer.payment_history = json.dumps(payment_history)
 
+        # Update customer fields
         customer.app_no = app_no
         customer.username = username
         customer.address = address
@@ -192,6 +197,7 @@ def update_customer(
         customer.end_date = datetime.strptime(end_date, "%Y-%m-%d").date()
         customer.note = note
 
+        # Handle image update
         if image:
             if customer.image and os.path.exists(customer.image):
                 os.remove(customer.image)
@@ -204,9 +210,9 @@ def update_customer(
 
             customer.image = image_path
 
-            db.commit()
-            db.refresh(customer)
-
+        # Commit changes to the database
+        db.commit()
+        db.refresh(customer)
 
         return customer
 
@@ -216,7 +222,9 @@ def update_customer(
     
     except SQLAlchemyError as e:
         db.rollback()
-        raise HTTPException(status_code=500, detail="Database error occurred.")
-
+        raise HTTPException(status_code=500, detail=f"Database error occurred: {str(e)}")
+    
     except Exception as e:
-        return JSONResponse(content={"msg":e},status_code=500)
+        # Log the error to see exactly what happened
+        print(f"Unexpected error: {e}")
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {str(e)}")

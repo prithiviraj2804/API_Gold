@@ -1,0 +1,111 @@
+Nmap scan report for static.88-198-134-91.clients.your-server.de (88.198.134.91)
+Host is up (0.17s latency).
+Not shown: 65421 filtered ports, 101 closed ports
+PORT     STATE SERVICE    VERSION
+21/tcp   open  ftp        vsftpd 2.0.8 or later
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+22/tcp   open  ssh        OpenSSH 8.2p1 (protocol 2.0)
+25/tcp   open  smtp       Exim smtpd
+| smtp-commands: static.88-198-134-91.clients.your-server.de Hello static.88-198-134-91.clients.your-server.de [103.78.167.103], SIZE 52428800, 8BITMIME, PIPELINING, AUTH PLAIN LOGIN, CHUNKING, STARTTLS, HELP, 
+|_ Commands supported: AUTH STARTTLS HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP 
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+53/tcp   open  domain     ISC BIND
+80/tcp   open  http       nginx
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-title: Success!
+110/tcp  open  pop3       Dovecot pop3d
+|_pop3-capabilities: STLS AUTH-RESP-CODE USER SASL(PLAIN LOGIN) TOP PIPELINING UIDL CAPA RESP-CODES
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+143/tcp  open  imap       Dovecot imapd
+|_imap-capabilities: capabilities OK post-login ENABLE IMAP4rev1 AUTH=LOGINA0001 IDLE LITERAL+ AUTH=PLAIN listed have LOGIN-REFERRALS more SASL-IR Pre-login STARTTLS ID
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+443/tcp  open  ssl/http   nginx
+|_http-title: Did not follow redirect to http://static.88-198-134-91.clients.your-server.de/
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+465/tcp  open  ssl/smtps?
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, NULL, RPCCheck, SMBProgNeg, X11Probe: 
+|     220 static.88-198-134-91.clients.your-server.de
+|   GenericLines, GetRequest, HTTPOptions, RTSPRequest: 
+|     220 static.88-198-134-91.clients.your-server.de
+|     unrecognized command
+|     unrecognized command
+|   Hello: 
+|     220 static.88-198-134-91.clients.your-server.de
+|     Syntactically invalid EHLO argument(s)
+|   Help: 
+|     220 static.88-198-134-91.clients.your-server.de
+|     214-Commands supported:
+|     AUTH HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP
+|   Kerberos, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+|     220 static.88-198-134-91.clients.your-server.de
+|_    characters are not allowed in SMTP commands
+| smtp-commands: static.88-198-134-91.clients.your-server.de Hello static.88-198-134-91.clients.your-server.de [103.78.167.103], SIZE 52428800, 8BITMIME, PIPELINING, AUTH PLAIN LOGIN, CHUNKING, HELP, 
+|_ Commands supported: AUTH HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP 
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+587/tcp  open  smtp       Exim smtpd
+| smtp-commands: static.88-198-134-91.clients.your-server.de Hello static.88-198-134-91.clients.your-server.de [103.78.167.103], SIZE 52428800, 8BITMIME, PIPELINING, AUTH PLAIN LOGIN, CHUNKING, STARTTLS, HELP, 
+|_ Commands supported: AUTH STARTTLS HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP 
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+993/tcp  open  imaps?
+|_imap-capabilities: IDLE LOGIN-REFERRALS post-login OK LITERAL+ SASL-IR listed Pre-login capabilities have ENABLE more AUTH=LOGINA0001 IMAP4rev1 AUTH=PLAIN ID
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+995/tcp  open  pop3s?
+|_pop3-capabilities: PIPELINING TOP SASL(PLAIN LOGIN) AUTH-RESP-CODE USER UIDL CAPA RESP-CODES
+| ssl-cert: Subject: commonName=server.vysyainfo.in/organizationName=Hestia Control Panel/stateOrProvinceName=California/countryName=US
+| Not valid before: 2022-12-09T13:39:05
+|_Not valid after:  2023-12-09T13:39:05
+8083/tcp open  http       nginx
+| http-title: LOGIN - vysyainfo.in - Hestia Control Panel
+|_Requested resource was /login/
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port465-TCP:V=7.80%T=SSL%I=7%D=10/18%Time=67128160%P=x86_64-pc-linux-gn
+SF:u%r(NULL,31,"220\x20static\.88-198-134-91\.clients\.your-server\.de\r\n
+SF:")%r(Hello,5D,"220\x20static\.88-198-134-91\.clients\.your-server\.de\r
+SF:\n501\x20Syntactically\x20invalid\x20EHLO\x20argument\(s\)\r\n")%r(Help
+SF:,86,"220\x20static\.88-198-134-91\.clients\.your-server\.de\r\n214-Comm
+SF:ands\x20supported:\r\n214\x20AUTH\x20HELO\x20EHLO\x20MAIL\x20RCPT\x20DA
+SF:TA\x20BDAT\x20NOOP\x20QUIT\x20RSET\x20HELP\r\n")%r(GenericLines,65,"220
+SF:\x20static\.88-198-134-91\.clients\.your-server\.de\r\n500\x20unrecogni
+SF:zed\x20command\r\n500\x20unrecognized\x20command\r\n")%r(GetRequest,65,
+SF:"220\x20static\.88-198-134-91\.clients\.your-server\.de\r\n500\x20unrec
+SF:ognized\x20command\r\n500\x20unrecognized\x20command\r\n")%r(HTTPOption
+SF:s,65,"220\x20static\.88-198-134-91\.clients\.your-server\.de\r\n500\x20
+SF:unrecognized\x20command\r\n500\x20unrecognized\x20command\r\n")%r(RTSPR
+SF:equest,65,"220\x20static\.88-198-134-91\.clients\.your-server\.de\r\n50
+SF:0\x20unrecognized\x20command\r\n500\x20unrecognized\x20command\r\n")%r(
+SF:RPCCheck,31,"220\x20static\.88-198-134-91\.clients\.your-server\.de\r\n
+SF:")%r(DNSVersionBindReqTCP,31,"220\x20static\.88-198-134-91\.clients\.yo
+SF:ur-server\.de\r\n")%r(DNSStatusRequestTCP,31,"220\x20static\.88-198-134
+SF:-91\.clients\.your-server\.de\r\n")%r(SSLSessionReq,66,"220\x20static\.
+SF:88-198-134-91\.clients\.your-server\.de\r\n501\x20NUL\x20characters\x20
+SF:are\x20not\x20allowed\x20in\x20SMTP\x20commands\r\n")%r(TerminalServerC
+SF:ookie,66,"220\x20static\.88-198-134-91\.clients\.your-server\.de\r\n501
+SF:\x20NUL\x20characters\x20are\x20not\x20allowed\x20in\x20SMTP\x20command
+SF:s\r\n")%r(TLSSessionReq,66,"220\x20static\.88-198-134-91\.clients\.your
+SF:-server\.de\r\n501\x20NUL\x20characters\x20are\x20not\x20allowed\x20in\
+SF:x20SMTP\x20commands\r\n")%r(Kerberos,66,"220\x20static\.88-198-134-91\.
+SF:clients\.your-server\.de\r\n501\x20NUL\x20characters\x20are\x20not\x20a
+SF:llowed\x20in\x20SMTP\x20commands\r\n")%r(SMBProgNeg,31,"220\x20static\.
+SF:88-198-134-91\.clients\.your-server\.de\r\n")%r(X11Probe,31,"220\x20sta
+SF:tic\.88-198-134-91\.clients\.your-server\.de\r\n");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 548.50 seconds

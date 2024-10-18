@@ -3,6 +3,7 @@ from typing import Optional,List
 from datetime import date
 import base64
 
+
 class UserCreate(BaseModel):
     username: str
     password: str
